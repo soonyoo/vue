@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script src="node_modules/vue/dist/vue.js"></script>
+    <div id="app">
+        <input type="text" v-model="num" /> <button @click="add">add</button> <br/>
+        <h1>{{name}} 非常帅。。。。。</h1><br>
+        有{{num}} 位女神为其着迷。。
+    </div>
+<script>
+    const app = new Vue({
+        el:"#app",
+        data:{
+            name : "虎哥",
+            num:0,
+        },
+        methods:{
+            add:function () {
+                //this代表的当前vue实例
+                this.num ++
+            }
+        },
+        beforeCreated(){
+            console.log('beforeCreated....');
+
+        },
+        created(){
+            //向后台发起ajax请求
+            //this.name = "虎哥 真的"
+
+            //延迟一秒加载，模拟ajax请求。。。。。。
+            //setTimeout(() => this.name = "徐哥 真的",1000);
+
+            console.log('created.....');
+        },
+        beforeMount(){
+            console.log('beforeMount.....');
+        },
+        mounted(){
+            console.log('mounted...');
+        },
+        beforeUpdate(){
+            console.log('before Update...');
+        },
+        updated(){
+            console.log('updated...');
+        }
+        
+
+
+
+
+
+    });
+
+</script>
+
+</body>
+</html>

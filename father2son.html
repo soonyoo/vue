@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>父组件向子组件传递数据</title>
+</head>
+<body>
+    <div id="app">
+        <intraduce :title="msg"></intraduce>
+        <hr/>
+        <for-component :items="lessons"></for-component>
+    </div>
+
+    <script src="./node_modules/vue/dist/vue.js"></script>
+    <script>
+        //子组件
+        const intraduce = {
+            template:"<h1>{{title}}</h1>",
+            props:["title"]
+        }
+
+        //子组件 中for循环,使用       
+        const forComponent = {
+            template:"<ul><li v-for='item in items'>{{item}}</li></ul>",
+            props:["items"],
+        }
+        //父组件
+        const app = new Vue({
+            el:"#app",
+            data:{
+                msg:"大家好，我是渣渣辉...",
+                lessons:['java','php','python']
+            },
+            components:{
+                intraduce,forComponent
+            }
+        });
+
+    
+    </script>
+
+    
+</body>
+</html>
