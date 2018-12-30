@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <h2>1.双括号表达式：</h2>
+        <p>{{msg}}</p>
+        <p>{{msg.toUpperCase()}}</p>
+        <p v-html="baidu"></p>
+        <p v-text="baidu"></p>
+        <hr/>
+        <h2>2.指令一：强制数据绑定</h2>
+        <img v-bind:src="imgUrl" />
+        <p>简写 ：</p>
+        <img :src="imgUrl" />
+        <hr/>
+        <h2>3.指令二:  绑定事件监听</h2>
+        <!-- 1.没有参数可以写test(),也可以直接写test
+             2.如果有参数，可以写参数据 如 test2('abcd...')
+        -->
+        <button v-on:click="test">test1</button>
+        <p>简写 @</p>
+        <button @click="test2('abcd..')">test2</button>
+        <p>也可以直接调用model中的内容</p>
+        <button @click="test2(msg)" >test3</button>
+
+
+    </div>
+    <script src="./node_modules/vue/dist/vue.js"></script>
+    <script>
+        const vm = new Vue({
+            el:"#app",
+            data:{
+                msg: "I Will Back..",
+                baidu:"<a href ='http://www.baidu.com'>百度</a>",
+                imgUrl:"https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo_top_86d58ae1.png",
+
+            },
+            methods:{
+                test(){
+                    alert('hehe.....');
+                },
+                test2(contest1){
+                    alert(contest1);
+                }
+            }
+        });
+    </script>
+</body>
+</html>
